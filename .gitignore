@@ -1,0 +1,22 @@
+# Node / Next.js
+node_modules/
+.next/
+out/
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Env
+.env
+.env.local
+
+# AI models
+*.onnx
+models/
+ai-models/
+
+# OS
+.DS_Store
+
