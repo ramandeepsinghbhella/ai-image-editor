@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    container_name: ai-backend
+    ports:
+      - "8000:8000"
+
+    # ✅ Mount model EXACTLY where rembg expects it
+    volumes:
+      - /root/.u2net:/root/.u2net
+
+    environment:
+      - REMBG_MODEL_PATH=/root/.u2net/u2net.onnx
+
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: ai-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped

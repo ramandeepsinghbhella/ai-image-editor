@@ -1,0 +1,16 @@
+services:
+  backend:
+    image: rdsbhella/ai-image-editor-backend:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - ~/.u2net:/root/.u2net
+    restart: unless-stopped
+
+  frontend:
+    image: rdsbhella/ai-image-editor-frontend:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
